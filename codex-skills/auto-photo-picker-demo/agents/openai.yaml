@@ -1,0 +1,4 @@
+interface:
+  display_name: "Auto Photo Picker Demo"
+  short_description: "Create and run the local AI-assisted photo selection demo."
+  default_prompt: "Create or set up a local auto photo picker demo with FastAPI backend, browser UI, local scoring, second-pass comparison, optional cloud review, and folder export."

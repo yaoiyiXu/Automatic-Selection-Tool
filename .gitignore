@@ -1,0 +1,16 @@
+backend/venv/
+backend/uploads/
+backend/selected_exports/
+backend/__pycache__/
+frontend/frontend-server.log
+frontend/frontend-server.err.log
+release/
+release_*/
+.tools/
+git-store/
+*.pyc
+*.pyo
+.env
+.env.*
+.DS_Store
+Thumbs.db

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>自动选片 Demo</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <div class="topbar">
+          <div>
+            <h1>自动选片</h1>
+            <p>选择一组照片，自动按清晰度和曝光评分排序。</p>
+          </div>
+          <div class="status-pill" id="statusText">后端待检测</div>
+        </div>
+
+        <label class="dropzone" for="photoInput" id="dropzone">
+          <input id="photoInput" type="file" accept="image/*" multiple />
+          <span class="drop-icon">+</span>
+          <strong>选择照片</strong>
+          <small>支持一次选择多张 JPG、PNG 等图片</small>
+        </label>
+
+        <div class="actions">
+          <button class="primary-button" id="analyzeButton" disabled>开始分析</button>
+          <button class="ghost-button" id="clearButton" disabled>清空</button>
+        </div>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>已选择照片</h2>
+            <span id="countText">0 张</span>
+          </div>
+          <div class="photo-grid" id="previewGrid">
+            <p class="empty-text">还没有选择照片。</p>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>推荐保留</h2>
+            <span id="resultHint">等待分析</span>
+          </div>
+          <div class="cloud-actions">
+            <button class="primary-button" id="cloudReviewButton" disabled>云端复评推荐照片</button>
+            <span id="cloudReviewHint">本地分析完成后可用</span>
+          </div>
+          <div class="ranking-list" id="rankingList">
+            <p class="empty-text">分析完成后，分数最高的照片会排在最上面。</p>
+          </div>
+        </section>
+
+        <section class="panel compare-panel" id="comparePanel" hidden>
+          <div class="panel-title">
+            <h2>二次预选</h2>
+            <span id="compareHint">等待开始</span>
+          </div>
+          <div class="compare-toolbar">
+            <button class="primary-button" id="startCompareButton">开始相似照片对比</button>
+            <button class="ghost-button" id="keepBothButton" disabled>这两张都保留</button>
+            <button class="ghost-button" id="skipPairButton" disabled>跳过这一组</button>
+          </div>
+          <div class="compare-stage" id="compareStage">
+            <p class="empty-text">点击开始后，会把相似照片尽量大地放在左右两侧，方便你挑更好的。</p>
+          </div>
+        </section>
+
+        <section class="panel final-panel" id="finalPanel" hidden>
+          <div class="panel-title">
+            <h2>最终预选框</h2>
+            <span id="finalHint">0 张</span>
+          </div>
+          <div class="final-actions">
+            <button class="primary-button" id="saveButton" disabled>选择文件夹保存</button>
+            <span id="saveHint"></span>
+          </div>
+          <div class="photo-grid" id="finalGrid">
+            <p class="empty-text">你在二次预选中留下的照片会出现在这里。</p>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <div class="lightbox" id="lightbox" hidden>
+      <button class="lightbox-close" id="lightboxClose" aria-label="关闭">×</button>
+      <img id="lightboxImage" alt="放大预览" />
+    </div>
+
+    <script src="/assets/app.js"></script>
+  </body>
+</html>
